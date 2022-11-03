@@ -3,8 +3,8 @@ import React from "react";
 import Analytics from "../Components/Analytics";
 import ContentWrapper from "../Components/ContentWrapper";
 import DataCard from "../Components/DataCard";
+import LatestTrasaction from "../Components/LatestTrasaction";
 import PageTitle from "../Components/PageTitle";
-import TableResponsive from "../Components/TableResponsive";
 
 export default function DeshBoard() {
   return (
@@ -13,7 +13,7 @@ export default function DeshBoard() {
         <PageTitle text="DASHBOARD" />
         <DataCard />
         <Analytics />
-        <TableResponsive />
+        <LatestTrasaction />
       </ContentWrapper>
     </>
   );

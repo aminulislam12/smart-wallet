@@ -8,7 +8,7 @@ import Table from "./Table";
 import Tbody from "./Tbody";
 import Thead from "./Thead";
 
-export default function TableResponsive() {
+export default function LatestTrasaction() {
   return (
     <>
       <Row>
@@ -45,7 +45,7 @@ export default function TableResponsive() {
                     <td>Thu 06:53 PM</td>
                     <td>Cash</td>
                     <td>
-                      <span className="badge badge-danger">Expense</span>
+                      <Badge className="badge-danger">Expense</Badge>
                     </td>
                     <td>$144</td>
                   </tr>

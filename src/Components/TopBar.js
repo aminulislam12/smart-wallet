@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { NavLink as Link } from "react-router-dom";
 import Logo from "./assets/images/logos.png";
 import avator from "./assets/images/users/avatar-6.jpg";
 
@@ -17,9 +18,9 @@ export default function TopBar() {
       <div className="topbar">
         <div className="topbar-left d-none d-lg-block">
           <div className="text-center">
-            <a href="index.html" className="logo">
+            <Link to="/" className="logo">
               <img src={Logo} height="40" alt="logo" />
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -1,20 +1,17 @@
 import React from "react";
+import { NavLink as Link } from "react-router-dom";
 
 export default function NavLink({
   className,
   icon,
   text,
-  href,
+  to,
   children,
   ...rest
 }) {
   return (
-    <>
-      <a href={href} className={`waves-effect ${className}`} {...rest}>
-        <i className={icon}></i>
-        <span> {text} </span>
-        {children}
-      </a>
-    </>
+    <Link to={to} className={`waves-effect`} exact {...rest}>
+      {children}
+    </Link>
   );
 }

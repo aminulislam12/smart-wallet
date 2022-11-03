@@ -1,6 +1,6 @@
 /*
-Template Name: Zinzer - Responsive Bootstrap 4 Admin Dashboard
-Author: ThemeDesign
+Template Name: Smart Wallet
+Author: Aminul Islam
 File: Main scss File
 */
 /*
@@ -1359,6 +1359,15 @@ body.fixed-left .side-menu.left {
 
 #sidebar-menu ul ul li.active a {
   color: #5985ee;
+}
+
+#sidebar-menu ul ul li > a.active {
+  color: #0f1f3e;
+  font-weight: bold;
+}
+#sidebar-menu ul li > a.active {
+  color: #5985ee;
+  font-weight: bold;
 }
 
 #sidebar-menu ul ul a {
@@ -4353,7 +4362,7 @@ table.focus-on tbody tr.focused td {
   border-radius: 0.25em;
   color: #ffffff;
   display: inline-block;
-  float: right;
+  /* float: right; */
   font-size: 14px;
   padding: 0.8em 1em;
 }
@@ -4545,7 +4554,7 @@ table.focus-on tbody tr.focused td {
   font-size: 0.9em;
 }
 /*# sourceMappingURL=style.css.map */
-.actionbtn {
+/* .actionbtn {
   cursor: pointer;
 }
 .actionbtn:nth-child(1):hover {
@@ -4553,7 +4562,7 @@ table.focus-on tbody tr.focused td {
 }
 .actionbtn:nth-child(2):hover {
   color: red;
-}
+} */
 /*
 ==================
 Modal
@@ -4791,4 +4800,26 @@ file custom css
 
 #formFileSm {
   height: calc(1.5em + 0.5rem + 9px) !important;
+}
+
+.custom-nav {
+  color: #707070;
+  display: block;
+  padding: 14px 25px;
+  background-color: #ffffff;
+  font-size: 13.5px;
+}
+.dropdown-item {
+  cursor: pointer;
+}
+
+.actionbtn {
+  cursor: pointer;
+}
+.actionbtn:nth-child(1):hover {
+  color: blue;
+}
+
+.actionbtn:nth-child(2):hover {
+  color: red;
 }
