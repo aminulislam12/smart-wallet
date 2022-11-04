@@ -4823,3 +4823,11 @@ file custom css
 .actionbtn:nth-child(2):hover {
   color: red;
 }
+/*Top Inline*/
+.top-inline {
+  position: absolute;
+  transform: translate3d(0px, 70px, 0px);
+  top: 0px;
+  left: 0px;
+  will-change: transform;
+}

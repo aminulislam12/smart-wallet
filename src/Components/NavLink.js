@@ -10,7 +10,7 @@ export default function NavLink({
   ...rest
 }) {
   return (
-    <Link to={to} className={`waves-effect`} exact {...rest}>
+    <Link to={to} className={`waves-effect ${className}`} exact {...rest}>
       {children}
     </Link>
   );
