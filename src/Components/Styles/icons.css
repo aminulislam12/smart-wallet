@@ -162,37 +162,37 @@
 }
 
 .fa-rotate-90 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)"; */
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 .fa-rotate-180 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)"; */
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
 .fa-rotate-270 {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)"; */
   -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
 .fa-flip-horizontal {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)"; */
   -webkit-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
 .fa-flip-vertical {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)"; */
   -webkit-transform: scale(1, -1);
   transform: scale(1, -1);
 }
 
 .fa-flip-horizontal.fa-flip-vertical {
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  /* -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)"; */
   -webkit-transform: scale(-1, -1);
   transform: scale(-1, -1);
 }
@@ -18854,8 +18854,8 @@ readers do not read off random characters that represent icons */
   color: rgba(255, 255, 255, 0.3);
 }
 
-.mdi-rotate-45 {
-  /*
+/* .mdi-rotate-45 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(45deg);
@@ -18870,16 +18870,16 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-45:before {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.mdi-rotate-90 {
-  /*
+/* .mdi-rotate-90 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(90deg);
@@ -18894,16 +18894,16 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-90:before {
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
-.mdi-rotate-135 {
-  /*
+/* .mdi-rotate-135 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(135deg);
@@ -18918,16 +18918,16 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-135:before {
   -webkit-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.mdi-rotate-180 {
-  /*
+/* .mdi-rotate-180 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(180deg);
@@ -18942,16 +18942,16 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-180:before {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 
-.mdi-rotate-225 {
-  /*
+/* .mdi-rotate-225 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(225deg);
@@ -18966,16 +18966,16 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-225:before {
   -webkit-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.mdi-rotate-270 {
-  /*
+/* .mdi-rotate-270 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(270deg);
@@ -18990,16 +18990,16 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-270:before {
   -webkit-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 
-.mdi-rotate-315 {
-  /*
+/* .mdi-rotate-315 {
+  
   // Not included in production
   &.mdi-flip-h:before {
       -webkit-transform: scaleX(-1) rotate(315deg);
@@ -19014,8 +19014,8 @@ readers do not read off random characters that represent icons */
       filter: FlipV;
       -ms-filter: "FlipV";
   }
-  */
-}
+ 
+} */
 
 .mdi-rotate-315:before {
   -webkit-transform: rotate(315deg);
@@ -19788,7 +19788,7 @@ readers do not read off random characters that represent icons */
 .ion-md-woman:before {
   display: inline-block;
   font-family: "Ionicons";
-  speak: none;
+  /* speak: none; */
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -22598,7 +22598,7 @@ readers do not read off random characters that represent icons */
 [class^="ti-"],
 [class*=" ti-"] {
   font-family: "themify";
-  speak: none;
+  /* speak: none; */
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -24036,7 +24036,7 @@ readers do not read off random characters that represent icons */
   font-weight: normal !important;
   font-variant: normal !important;
   text-transform: none !important;
-  speak: none;
+  /* speak: none; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -24048,7 +24048,7 @@ readers do not read off random characters that represent icons */
   font-weight: normal !important;
   font-variant: normal !important;
   text-transform: none !important;
-  speak: none;
+  /* speak: none; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

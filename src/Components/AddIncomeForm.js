@@ -53,6 +53,7 @@ export default function AddIncomeForm() {
                   placeholder="Enter Your Amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
+                  col="10"
                 />
                 <Select
                   lable="Account Type"
@@ -89,12 +90,14 @@ export default function AddIncomeForm() {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
+                  col="10"
                 />
                 <Input
                   lable="Time"
                   type="time"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
+                  col="10"
                 />
                 <Textarea
                   lable="Description"

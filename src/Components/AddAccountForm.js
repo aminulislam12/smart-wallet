@@ -68,6 +68,7 @@ export default function AddAccountForm() {
                     type="text"
                     value={bankname}
                     onChange={(e) => setBankName(e.target.value)}
+                    col="10"
                   />
                 ) : null}
                 <Input
@@ -76,6 +77,7 @@ export default function AddAccountForm() {
                   type="text"
                   value={accName}
                   onChange={(e) => setAccName(e.target.value)}
+                  col="10"
                 />
                 <Input
                   lable="Acount Number"
@@ -83,6 +85,7 @@ export default function AddAccountForm() {
                   type="number"
                   value={accNum}
                   onChange={(e) => setAccNumber(e.target.value)}
+                  col="10"
                 />
                 <div className="float-left mt-3">
                   <Button className="btn btn-success" type="submit">
