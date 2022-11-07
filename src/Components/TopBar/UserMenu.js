@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import avator from "../assets/images/users/avatar-6.jpg";
+import { useAuth } from "../../Context/AuthContext";
+import avator from "../assets/images/images.png";
 import NavItem from "../NavItem";
 import NavLink from "../NavLink";
 import TextWirhIcon from "../TextWirhIcon";
@@ -7,6 +8,7 @@ import TopDropdown from "./TopDropdown";
 
 export default function UserMenu() {
   const [toggle, setToggle] = useState(false);
+  const { currentUser, logout } = useAuth();
 
   const toggleHandle = () => {
     setToggle(false);
@@ -28,7 +30,10 @@ export default function UserMenu() {
         >
           <img src={avator} alt="user" className="rounded-circle" />
           <span className="d-none d-md-inline-block ml-2">
-            <TextWirhIcon text="John Doe" icon="mdi mdi-chevron-down" />
+            <TextWirhIcon
+              text={currentUser.displayName}
+              icon="mdi mdi-chevron-down"
+            />
           </span>
         </span>
         <TopDropdown
@@ -52,13 +57,9 @@ export default function UserMenu() {
           >
             <i className="dripicons-gear text-muted"></i> Settings
           </NavLink>
-          <NavLink
-            className="dropdown-item"
-            to="/logout"
-            onClick={toggleHandle}
-          >
+          <span className="dropdown-item" onClick={logout}>
             <i className="dripicons-exit text-muted"></i> Logout
-          </NavLink>
+          </span>
         </TopDropdown>
       </NavItem>
     </>

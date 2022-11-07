@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../Context/AuthContext";
+import Alert from "../Alert";
 import Logo from "../assets/images/color-logo.png";
 import AuthLogo from "../AuthLogo";
 import Card from "../Card";
 import CardBody from "../CardBody";
 import Col from "../Col";
-import CheckBox from "../Forms Elements/CheckBox";
 import CustomSubmitBtn from "../Forms Elements/CustomSubmitBtn";
 import Form from "../Forms Elements/Form";
 import FormText from "../Forms Elements/FormText";
@@ -16,13 +17,31 @@ export default function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confrimPassword, setConfrimPass] = useState("");
-  const [agree, setAgree] = useState(false);
 
-  const submitHandle = (e) => {
+  const [error, setError] = useState();
+  const [loadding, setLoadding] = useState();
+
+  const { signUp } = useAuth();
+  const history = useHistory();
+
+  async function submitHandle(e) {
     e.preventDefault();
-    console.log({ name, email, password, confrimPassword, agree });
+    //Validation
+    if (password !== confrimPassword) {
+      return setError("Password don't Match!");
+    }
+    try {
+      setError("");
+      setLoadding(true);
+      await signUp(email, password, name);
+      history.push("/");
+    } catch (err) {
+      setError(err.message);
+      console.log(err);
+      setLoadding(false);
+    }
     resetForm();
-  };
+  }
 
   const resetForm = () => {
     setName("");
@@ -38,6 +57,7 @@ export default function SignUpForm() {
             <h4 className="text-muted float-right font-18 mt-4">SignUp</h4>
             <AuthLogo image={Logo} alt="LoginLogos" size="40" />
           </div>
+          {error && <Alert text={error} />}
           <div className="p-2">
             <Form onSubmit={submitHandle}>
               <Input
@@ -72,18 +92,7 @@ export default function SignUpForm() {
                 onChange={(e) => setConfrimPass(e.target.value)}
                 required
               />
-              <CheckBox
-                col="12"
-                text="I accept"
-                value={agree}
-                onChange={(e) => setAgree(e.target.value)}
-              >
-                <NavLink to="/terms" className="text-primary">
-                  Terms and Conditions
-                </NavLink>
-              </CheckBox>
-
-              <CustomSubmitBtn />
+              <CustomSubmitBtn disabled={loadding} />
             </Form>
             <FormText />
           </div>

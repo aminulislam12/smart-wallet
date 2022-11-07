@@ -2,7 +2,7 @@ import React from "react";
 import Col from "../Col";
 import Row from "../Row";
 
-export default function Input({ type, placeholder, col, ...rest }) {
+export default function Input({ type, placeholder, col, errorTxt, ...rest }) {
   return (
     <Row className="form-group">
       <Col className={`col-sm-${col}`}>
@@ -12,6 +12,7 @@ export default function Input({ type, placeholder, col, ...rest }) {
           placeholder={placeholder}
           {...rest}
         />
+        <span id="error">{errorTxt}</span>
       </Col>
     </Row>
   );

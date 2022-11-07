@@ -5,7 +5,7 @@ import Col from "./Col";
 
 export default function AuthContent({ children }) {
   return (
-    <Col className="col-lg-6">
+    <Col className="col-lg-6 d-none d-sm-block">
       <div>
         <AuthLogo image={Logo} alt="LoginPage" size="50" />
         <h5 className="font-14 text-muted mb-4">
