@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
+import SearchBar from "././TopBar/SearchBar";
 import Nav from "./Nav";
 import MenuToggleBtn from "./TopBar/MenuToggleBtn";
-import SearchBar from "./TopBar/SearchBar";
 import SearchIcon from "./TopBar/SearchIcon";
 import TopBarLogo from "./TopBar/TopBarLogo";
 import TopCreateMenu from "./TopBar/TopCreateMenu";
@@ -17,9 +17,7 @@ export default function TopBar() {
 
   const handleClick = () => {
     let wrapper = document.getElementById("wrapper");
-    let body = document.getElementById("domact");
     wrapper.classList.toggle("enlarged");
-    body.classList.toggle("fixed-left-void");
   };
 
   return (
@@ -29,7 +27,6 @@ export default function TopBar() {
 
         <nav className="navbar-custom">
           <SearchBar toggle={toggle} handleToggle={handleToggle} />
-
           <Nav className="list-inline float-right mb-0">
             <SearchIcon toggle={toggle} handleToggle={handleToggle} />
             <UserMenu />

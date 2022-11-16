@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useGlobalState } from "../Context/GlobalState";
 import Button from "./Button";
 import Card from "./Card";
 import CardBody from "./CardBody";
@@ -12,55 +13,42 @@ import Textarea from "./Forms Elements/Textarea";
 import Row from "./Row";
 
 export default function AddExpanceForm() {
-  const amountType = ["Select", "Bank", "MFS"];
-  const category = ["Select", "Salary", "Profit", "Invesment"];
-  const bankAccount = ["Select", "Aminul Islam", "Aminul Islam"];
-  const mfsAccount = ["Select", "Aminul Islam", "Faisal"];
+  const { expenceTransction, addExpence, accountList } = useGlobalState();
+  const uuid = expenceTransction.length + 1;
+  const categorys = ["Select", "Salary", "Profit", "Invesment"];
+  const accounts = accountList.map(
+    (item) => `${item.acc_number} ${item.bank_name} ${item.account_name}`
+  );
   //Form State
   const [amount, setAmount] = useState("");
-  const [accType, setAccType] = useState("Select");
-  const [Bnaccount, setbnAccount] = useState("Select");
-  const [mfsaccount, setMfsAccount] = useState("Select");
+  const [account, setAccount] = useState("Select");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [description, setDescription] = useState("");
-  const [categ, setcategory] = useState("Select");
+  const [category, setCategory] = useState("Select");
 
   const submitHandle = (e) => {
     e.preventDefault();
-    if (accType === "Bank") {
-      console.log({
-        amount,
-        accType,
-        Bnaccount,
-        date,
-        time,
+    if (amount !== "") {
+      const newExpenceTrnx = {
+        id: uuid,
+        amount: amount * 1,
+        account,
+        date: new Date(date).toISOString(),
         description,
-        categ,
-      });
-    } else if (accType === "MFS") {
-      console.log({
-        amount,
-        accType,
-        mfsaccount,
-        date,
-        time,
-        description,
-        categ,
-      });
+        category,
+      };
+      addExpence(newExpenceTrnx);
+      console.log(newExpenceTrnx);
     }
     resetForm();
   };
 
   const resetForm = () => {
     setAmount("");
-    setAccType("Select");
+    setAccount("Select");
     setDate("");
-    setTime("");
     setDescription("");
-    setcategory("Select");
-    setbnAccount("Select");
-    setMfsAccount("Select");
+    setCategory("Select");
   };
   return (
     <ContentWrapper>
@@ -78,35 +66,29 @@ export default function AddExpanceForm() {
                   col="10"
                 />
                 <Select
-                  lable="Account Type"
-                  value={accType}
-                  onChange={(e) => setAccType(e.target.value)}
+                  lable="Account"
+                  value={account}
+                  onChange={(e) => setAccount(e.target.value)}
                 >
-                  {amountType.map((opt) => (
-                    <Option options={opt} key={Math.random()} value={opt} />
-                  ))}
+                  {accountList.length === 0 ? (
+                    <Option
+                      options="Before Add Account"
+                      value="Before Add Account"
+                    />
+                  ) : accountList.length === 1 ? (
+                    accounts.map((opt) => (
+                      <>
+                        <option key={Math.random()}>Select</option>
+                        <Option options={opt} key={Math.random()} value={opt} />
+                      </>
+                    ))
+                  ) : (
+                    accounts.map((opt) => (
+                      <Option options={opt} key={Math.random()} value={opt} />
+                    ))
+                  )}
                 </Select>
-                {accType === "Bank" ? (
-                  <Select
-                    lable="Bank Account"
-                    value={Bnaccount}
-                    onChange={(e) => setbnAccount(e.target.value)}
-                  >
-                    {bankAccount.map((opt) => (
-                      <Option options={opt} key={Math.random()} value={opt} />
-                    ))}
-                  </Select>
-                ) : accType === "MFS" ? (
-                  <Select
-                    lable="MFS Account"
-                    value={mfsaccount}
-                    onChange={(e) => setMfsAccount(e.target.value)}
-                  >
-                    {mfsAccount.map((opt) => (
-                      <Option options={opt} key={Math.random()} value={opt} />
-                    ))}
-                  </Select>
-                ) : null}
+
                 <Input
                   lable="Date"
                   type="date"
@@ -114,13 +96,7 @@ export default function AddExpanceForm() {
                   onChange={(e) => setDate(e.target.value)}
                   col="10"
                 />
-                <Input
-                  lable="Time"
-                  type="time"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  col="10"
-                />
+
                 <Textarea
                   lable="Description"
                   placeholder="Description..."
@@ -129,15 +105,17 @@ export default function AddExpanceForm() {
                 />
                 <Select
                   lable="Category"
-                  value={categ}
-                  onChange={(e) => setcategory(e.target.value)}
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                 >
-                  {category.map((opt) => (
+                  {categorys.map((opt) => (
                     <Option options={opt} key={Math.random()} value={opt} />
                   ))}
                 </Select>
                 <div className="float-left mt-3">
-                  <Button className="btn btn-success">Submit</Button>
+                  <Button className="btn btn-success">
+                    <i className="fas fa-plus-circle"></i> Add Expance
+                  </Button>
                 </div>
               </Form>
             </CardBody>

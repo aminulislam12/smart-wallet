@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Button({ className, children, ...rest }) {
+export default function Button({ className, children, disabled, ...rest }) {
   return (
     <>
-      <button className={className} {...rest}>
+      <button className={className} disabled={disabled} {...rest}>
         {children}
       </button>
     </>

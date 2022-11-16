@@ -1,20 +1,28 @@
 import React from "react";
+import { useGlobalState } from "../Context/GlobalState";
 import Card from "./Card";
 import CardBody from "./CardBody";
 import Col from "./Col";
+import ErrorRow from "./ErrorRow";
 import Row from "./Row";
 import Table from "./Table";
 import TableRow from "./TableRow";
 import Tbody from "./Tbody";
 import Thead from "./Thead";
+import TotalTableRow from "./TotalTableRow";
 import TransctionAddBTN from "./TransctionAddBTN";
 
 export default function IncomeTnxTable() {
+  const { incomeTransction } = useGlobalState();
+  const incomeAmounts = incomeTransction.map((incomeTnx) => incomeTnx.amount);
+  const totalIncome = incomeAmounts
+    .reduce((prevvalue, currValue) => (prevvalue += currValue), 0)
+    .toFixed(2);
+
   const tableHead = [
     "TNX No.",
     "Description",
     "Date",
-    "Time",
     "Category",
     "Account",
     "Amount",
@@ -43,8 +51,14 @@ export default function IncomeTnxTable() {
                   ))}
                 </Thead>
                 <Tbody>
-                  <TableRow />
-                  <TableRow />
+                  {incomeTransction.length === 0 ? (
+                    <ErrorRow />
+                  ) : (
+                    incomeTransction.map((item) => (
+                      <TableRow key={item.id} tnxdetails={item} />
+                    ))
+                  )}
+                  <TotalTableRow total={totalIncome} />
                 </Tbody>
               </Table>
             </CardBody>

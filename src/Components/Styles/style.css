@@ -485,6 +485,7 @@ button.bg-darker:focus {
   font-size: 66%;
   font-weight: 600;
   line-height: 1;
+  text-transform: capitalize;
 
   display: inline-block;
 

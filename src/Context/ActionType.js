@@ -1,0 +1,6 @@
+export const ADD_INCOME = "ADD_INCOME";
+export const ADD_EXPANCE = "ADD_EXPENCE";
+export const ADD_ACCOUNT = "ADD_ACCOUNT";
+export const DELETE_INCOME = "DELETE_INCOME";
+export const DELETE_EXPENCE = "DELETE_EXPENCE";
+export const DELETE_ACCOUNT = "DELETE_ACCOUNT";

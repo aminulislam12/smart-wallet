@@ -23,6 +23,10 @@ export default function LoginPage() {
             className="mdi mdi-arrow-right"
             text="At solmen va esser necessi far uniform paroles."
           />
+          <TermsList
+            className="mdi mdi-arrow-right"
+            text="At solmen va esser necessi far uniform paroles."
+          />
         </Terms>
       </AuthContent>
       <LoginForm />

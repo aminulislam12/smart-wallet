@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useGlobalState } from "../Context/GlobalState";
 import Button from "./Button";
 import Card from "./Card";
 import CardBody from "./CardBody";
@@ -12,34 +13,44 @@ import Textarea from "./Forms Elements/Textarea";
 import Row from "./Row";
 
 export default function AddIncomeForm() {
-  const accountType = ["Select", "Bank", "MFS"];
-  const category = ["Select", "Salary", "Profit", "Invesment"];
-  const bankAccount = ["Select", "Aminul Islam", "Aminul Islam"];
-  const mfsAccount = ["Select", "Aminul Islam", "Faisal"];
+  const { incomeTransction, addIncome, accountList } = useGlobalState();
+  const uuid = incomeTransction.length + 1;
+  const accname = accountList.map(
+    (item) => `${+item.acc_number} ${item.bank_name} ${item.account_name}`
+  );
+  const categorys = ["Select", "Salary", "Profit", "Invesment"];
+
   //Form State
   const [amount, setAmount] = useState("");
-  const [accType, setAccType] = useState("Select");
-  const [Bnaccount, setbnAccount] = useState("Select");
-  const [mfsaccount, setMfsAccount] = useState("Select");
+  const [account, setAccount] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
   const [description, setDescription] = useState("");
-  const [categ, setcategory] = useState("Select");
+  const [category, setCategory] = useState("Select");
 
   const submitHandle = (e) => {
     e.preventDefault();
-    console.log({ amount, accType, date, time, description, categ });
-    resetForm();
+    if (amount !== "") {
+      const newIncomeTnx = {
+        id: uuid,
+        amount: amount * 1,
+        account,
+        date: new Date(date).toISOString(),
+        description,
+        category,
+      };
+
+      addIncome(newIncomeTnx);
+      resetForm();
+    }
   };
 
   const resetForm = () => {
     setAmount("");
-    setAccType("Select");
     setDate("");
-    setTime("");
     setDescription("");
-    setcategory("Select");
+    setCategory("Select");
   };
+
   return (
     <ContentWrapper>
       <Row>
@@ -55,67 +66,61 @@ export default function AddIncomeForm() {
                   onChange={(e) => setAmount(e.target.value)}
                   col="10"
                 />
+
                 <Select
-                  lable="Account Type"
-                  value={accType}
-                  onChange={(e) => setAccType(e.target.value)}
+                  lable="Account"
+                  value={account}
+                  onChange={(e) => setAccount(e.target.value)}
+                  required
                 >
-                  {accountType.map((opt) => (
-                    <Option options={opt} key={Math.random()} value={opt} />
-                  ))}
+                  {accountList.length === 0 ? (
+                    <Option
+                      value="Please Before Add Account"
+                      options="Please Before Add Account"
+                    />
+                  ) : accountList.length === 1 ? (
+                    accname.map((opt) => (
+                      <>
+                        <option>Select</option>
+                        <Option options={opt} key={Math.random()} value={opt} />
+                      </>
+                    ))
+                  ) : (
+                    accname.map((opt) => (
+                      <Option options={opt} key={Math.random()} value={opt} />
+                    ))
+                  )}
                 </Select>
-                {accType === "Bank" ? (
-                  <Select
-                    lable="Bank Account"
-                    value={Bnaccount}
-                    onChange={(e) => setbnAccount(e.target.value)}
-                  >
-                    {bankAccount.map((opt) => (
-                      <Option options={opt} key={Math.random()} value={opt} />
-                    ))}
-                  </Select>
-                ) : accType === "MFS" ? (
-                  <Select
-                    lable="MFS Account"
-                    value={mfsaccount}
-                    onChange={(e) => setMfsAccount(e.target.value)}
-                  >
-                    {mfsAccount.map((opt) => (
-                      <Option options={opt} key={Math.random()} value={opt} />
-                    ))}
-                  </Select>
-                ) : null}
                 <Input
                   lable="Date"
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   col="10"
-                />
-                <Input
-                  lable="Time"
-                  type="time"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                  col="10"
+                  required
                 />
                 <Textarea
                   lable="Description"
                   placeholder="Description..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  required
                 />
                 <Select
                   lable="Category"
-                  value={categ}
-                  onChange={(e) => setcategory(e.target.value)}
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  required
                 >
-                  {category.map((opt) => (
+                  {categorys.map((opt) => (
                     <Option options={opt} key={Math.random()} value={opt} />
                   ))}
                 </Select>
                 <div className="float-left mt-3">
-                  <Button className="btn btn-success">Submit</Button>
+                  <Button className="btn btn-success">
+                    {" "}
+                    <i className="fas fa-plus-circle"></i> Add Income
+                  </Button>
                 </div>
               </Form>
             </CardBody>

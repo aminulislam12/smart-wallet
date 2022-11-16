@@ -7,6 +7,7 @@ import AuthLogo from "../AuthLogo";
 import Card from "../Card";
 import CardBody from "../CardBody";
 import Col from "../Col";
+import CheckBox from "../Forms Elements/CheckBox";
 
 import CustomSubmitBtn from "../Forms Elements/CustomSubmitBtn";
 import Form from "../Forms Elements/Form";
@@ -100,6 +101,7 @@ export default function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <CheckBox col="12" text="Remember Me" />
               <CustomSubmitBtn disabled={loadding} />
             </Form>
             <FormText />

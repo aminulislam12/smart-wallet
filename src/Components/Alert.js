@@ -8,14 +8,6 @@ export default function Alert({ text }) {
         className="alert alert-warning alert-dismissible fade show"
         role="alert"
       >
-        <button
-          type="button"
-          className="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
         <strong>Warning!</strong> {text}
       </div>
     </>
